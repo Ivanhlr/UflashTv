@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UflashBrasil TV - Lifetime™</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/swiper-bundle.min.css">
+    <link href="css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/all.min_1.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" as="style">
+
+    <meta name="description" content="UflashBrasil TV - Lifetime™- Explore top video collections with smooth carousels and easy navigation.">
+    <meta name="keywords" content="Uflash, videos, candid, leaked videos, BBC">
+    <meta name="author" content="UflashBrasil TV - Lifetime™">
+    <meta http-equiv="Cache-Control" content="max-age=86400, must-revalidate">
+    <meta http-equiv="Expires" content="Wed, 21 Oct 2029 07:28:00 GMT">
+
+    <!-- Small inline CSS for the Trust me mini-slider (doesn't change other styles) -->
+    <style>
+        /* Trust-me mini-slider: horizontal thumbnails with smooth snapping */
+
+        .cards.trust-me {
+            /* keep cards container layout consistent with the rest,
+         allow the contained card(s) to size naturally */
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+            flex-wrap: nowrap;
+        }
+
+        .cards.trust-me .card {
+            width: 320px;
+            /* card width — adjust if you want larger/smaller */
+            box-sizing: border-box;
+        }
+
+        .mini-slider {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scroll-snap-type: x mandatory;
+            padding-bottom: 6px;
+            margin-bottom: 8px;
+        }
+
+        .mini-slider img {
+            flex: 0 0 300px;
+            /* each image fixed width inside the card */
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            display: block;
+            scroll-snap-align: start;
+            object-fit: cover;
+        }
+
+        /* optional: hide scrollbar in some browsers for cleaner look */
+
+        .mini-slider::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .mini-slider::-webkit-scrollbar-thumb {
+            background: rgba(0, 0, 0, 0.12);
+            border-radius: 8px;
+        }
+
+        /* Smaller screens: reduce image width */
+
+        @media (max-width: 480px) {
+            .cards.trust-me .card {
+                width: 260px;
+            }
+            .mini-slider img {
+                flex: 0 0 240px;
+            }
+        }
+
+        /* Checkout CTA button style (now red, glowing) */
+
+        .checkout-cta {
+            display: inline-block;
+            text-decoration: none;
+            background: linear-gradient(90deg, #ff4b4b, #cc0000);
+            /* red gradient */
+            color: #fff;
+            font-weight: 800;
+            padding: 18px 28px;
+            /* slightly bigger so it's more visible */
+            border-radius: 34px;
+            box-shadow: 0 8px 28px rgba(255, 75, 75, 0.28);
+            border: 0;
+            cursor: pointer;
+            font-size: 18px;
+            /* increased font size for visibility */
+            transition: transform .12s ease, box-shadow .12s ease;
+        }
+
+        .checkout-cta:active {
+            transform: translateY(1px);
+        }
+
+        .checkout-cta:hover {
+            box-shadow: 0 12px 36px rgba(255, 75, 75, 0.38);
+            transform: translateY(-2px);
+        }
+
+        /* Pulsing glow for extra prominence */
+
+        @keyframes pulseGlow {
+            0% {
+                box-shadow: 0 6px 18px rgba(255, 75, 75, 0.22);
+            }
+            50% {
+                box-shadow: 0 16px 40px rgba(255, 75, 75, 0.36);
+                transform: translateY(-1px);
+            }
+            100% {
+                box-shadow: 0 6px 18px rgba(255, 75, 75, 0.22);
+                transform: translateY(0);
+            }
+        }
+
+        .checkout-cta.pulse {
+            animation: pulseGlow 2s infinite ease-in-out;
+        }
+
+        /* Support CTA button (red now) */
+
+        .support-btn {
+            display: inline-flex;
+            gap: 8px;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 14px;
+            border-radius: 8px;
+            background: linear-gradient(90deg, #ff4b4b, #cc0000);
+            /* red gradient */
+            color: #fff;
+            font-weight: 700;
+            text-decoration: none;
+            border: 0;
+            box-shadow: 0 6px 18px rgba(255, 75, 75, 0.18);
+        }
+
+        .support-text {
+            margin: 12px 0;
+            /* spacing for the middle text */
+            font-size: 14px;
+            color: #222;
+            line-height: 1.35;
+            text-align: center;
+            /* placed in the middle of the buttons visually */
+        }
+
+        /* Pre-CTA (visible call-to-action placed BEFORE the purchase button) */
+
+        .pre-cta {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 14px;
+        }
+
+        .pre-cta .pre-cta-box {
+            background: rgba(255, 255, 255, 0.04);
+            border-radius: 28px;
+            padding: 10px 18px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.45);
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            color: #fff;
+            font-weight: 700;
+            font-size: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+        }
+
+        .pre-cta .pre-cta-highlight {
+            background: linear-gradient(90deg, #ffb84d, #ff6b6b);
+            color: #081018;
+            padding: 8px 12px;
+            border-radius: 18px;
+            font-weight: 900;
+            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.18);
+        }
+
+        /* Big visible offer block style (added for the requested large CTA content) */
+
+        .offer-block {
+            background: linear-gradient(180deg, #fff6f6, #ffecec);
+            border-radius: 12px;
+            padding: 18px;
+            margin-bottom: 16px;
+            box-shadow: 0 12px 40px rgba(255, 0, 0, 0.12);
+            color: #2b0606;
+            text-align: center;
+            line-height: 1.35;
+        }
+
+        .offer-block h2 {
+            margin: 0 0 8px 0;
+            font-size: 20px;
+            letter-spacing: 0.6px;
+            font-weight: 900;
+        }
+
+        .offer-block .big-price {
+            font-size: 28px;
+            font-weight: 900;
+            color: #b60000;
+            margin: 12px 0;
+        }
+
+        .offer-block .notice {
+            font-weight: 800;
+            margin-top: 12px;
+            font-size: 16px;
+            color: #7a0000;
+        }
+
+        .footer {
+            padding: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="main-content">
+
+        <div class="video-carousel">
+            <div class="carousel">
+                <!-- Conteúdo do carrossel -->
+            </div>
+
+            <div class="swiper">
+                <div class="swiper-wrapper">
+
+                    <!-- Example of a single video slide -->
+                    <div class="swiper-slide">
+                        <video class="video-player" src="https://files.catbox.moe/c0b3ts.MP4" autoplay muted loop playsinline loading="lazy"></video>
+                        <div class="video-info">
+                            <p><b>☠︎</b>UflashBrasil TV - Lifetime™</p>
+                            <p><b>☠︎</b>3,000 VIDEOS</p>
+                            <p><b>☠︎</b>+180GB</p>
+                            <p><b>☠</b>LIFETIME ACCESS</p>
+                            <p><b>EXCLUSIVE ON UFL-PREMIUM</b></p>
+                        </div>
+                        <div class="video-controls">
+                            <button class="btnPlayPause">Pause</button>
+                            <button class="btnMuteUnmute">Unmute</button>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <video class="video-player" src="https://files.catbox.moe/lunx8c.MP4" autoplay muted loop playsinline loading="lazy"></video>
+                        <div class="video-info">
+                            <p><b>☠︎</b>UflashBrasil TV - Lifetime™</p>
+                            <p><b>☠︎</b>3,000 VIDEOS</p>
+                            <p><b>☠︎</b>+180GB</p>
+                            <p><b>☠</b>LIFETIME ACCESS</p>
+                            <p><b>EXCLUSIVE ON UFL-PREMIUM</b></p>
+                        </div>
+                        <div class="video-controls">
+                            <button class="btnPlayPause">Pause</button>
+                            <button class="btnMuteUnmute">Unmute</button>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <video class="video-player" src="https://files.catbox.moe/sdhk5m.MP4" autoplay muted loop playsinline loading="lazy"></video>
+                        <div class="video-info">
+                            <p><b>☠︎</b>UflashBrasil TV - Lifetime™</p>
+                            <p><b>☠︎</b>3,000 VIDEOS</p>
+                            <p><b>☠︎</b>+180GB</p>
+                            <p><b>☠</b>LIFETIME ACCESS</p>
+                            <p><b>EXCLUSIVE ON UFL-PREMIUM</b></p>
+                        </div>
+                        <div class="video-controls">
+                            <button class="btnPlayPause">Pause</button>
+                            <button class="btnMuteUnmute">Unmute</button>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <video class="video-player" src="https://files.catbox.moe/fnkm0x.MP4" autoplay muted loop playsinline loading="lazy"></video>
+                        <div class="video-info">
+                            <p><b>☠︎</b>BRALESS</p>
+                            <p><b>☠︎</b>5755 VIDEOS</p>
+                            <p><b>☠︎</b>LIFETIME ACCESS</p>
+                            <p style="color: #007AFF;"><b>EXCLUSIVE ON BRL-PREMIUM</b></p>
+                        </div>
+                        <div class="video-controls">
+                            <button class="btnPlayPause">Pause</button>
+                            <button class="btnMuteUnmute">Unmute</button>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <video class="video-player" src="https://files.catbox.moe/flx0qa.mp4" autoplay muted loop playsinline loading="lazy"></video>
+                        <div class="video-info">
+                            <p><b>☠︎</b>BRALESS</p>
+                            <p><b>☠︎</b>5755 VIDEOS</p>
+                            <p><b>☠︎</b>LIFETIME ACCESS</p>
+                            <p style="color: #007AFF;"><b>EXCLUSIVE ON BRL-PREMIUM</b></p>
+                        </div>
+                        <div class="video-controls">
+                            <button class="btnPlayPause">Pause</button>
+                            <button class="btnMuteUnmute">Unmute</button>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <video class="video-player" src="https://files.catbox.moe/u87gss.mp4" autoplay muted loop playsinline loading="lazy"></video>
+                        <div class="video-info">
+                            <p><b>☠︎</b>BRALESS</p>
+                            <p><b>☠︎</b>5755 VIDEOS</p>
+                            <p><b>☠︎</b>LIFETIME ACCESS</p>
+                            <p style="color: #007AFF;"><b>EXCLUSIVE ON UFL-PREMIUM</b></p>
+                        </div>
+                        <div class="video-controls">
+                            <button class="btnPlayPause">Pause</button>
+                            <button class="btnMuteUnmute">Unmute</button>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <video class="video-player" src="https://files.catbox.moe/dznvow.mp4" autoplay muted loop playsinline loading="lazy"></video>
+                        <div class="video-info">
+                            <p><b>☠︎</b>SECRETPASS</p>
+                            <p><b>☠︎</b>+2567 VIDEOS</p>
+                            <p><b>☠︎</b>5TB</p>
+                            <p><b>☠︎</b>PREMIUM GROUP</p>
+                            <p style="color: #007AFF;"><b>ONLY ON SECRETPASS</b></p>
+                        </div>
+                        <div class="video-controls">
+                            <button class="btnPlayPause">Pause</button>
+                            <button class="btnMuteUnmute">Unmute</button>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <video class="video-player" src="https://files.catbox.moe/rtyzg3.mp4" autoplay muted loop playsinline loading="lazy"></video>
+                        <div class="video-info">
+                            <p><b>☠︎</b>SECRETPASS</p>
+                            <p><b>☠︎</b>+2567 VIDEOS</p>
+                            <p><b>☠︎</b>5TB</p>
+                            <p><b>☠︎</b>PREMIUM GROUP</p>
+                            <p style="color: #007AFF;"><b>ONLY ON SECRETPASS</b></p>
+                        </div>
+                        <div class="video-controls">
+                            <button class="btnPlayPause">Pause</button>
+                            <button class="btnMuteUnmute">Unmute</button>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <video class="video-player" src="https://files.catbox.moe/jnlc4m.mp4" autoplay muted loop playsinline loading="lazy"></video>
+                        <div class="video-info">
+                            <p><b>☠︎</b>SECRETPASS</p>
+                            <p><b>☠︎</b>+2567 VIDEOS</p>
+                            <p><b>☠︎</b>5TB</p>
+                            <p><b>☠︎</b>PREMIUM GROUP</p>
+                            <p style="color: #007AFF;"><b>ONLY ON SECRETPASS</b></p>
+                        </div>
+                        <div class="video-controls">
+                            <button class="btnPlayPause">Pause</button>
+                            <button class="btnMuteUnmute">Unmute</button>
+                        </div>
+                    </div>
+
+                    <!-- Add more video slides as needed -->
+                </div>
+
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+
+            <!-- Indicadores dinâmicos com roleta -->
+            <div class="carousel-indicators">
+                <span class="indicator"></span><span class="indicator"></span><span class="indicator"></span>
+                <span class="indicator"></span><span class="indicator"></span><span class="indicator"></span>
+                <span class="indicator"></span><span class="indicator"></span><span class="indicator"></span>
+                <span class="indicator"></span>
+            </div>
+        </div>
+        <!-- end .video-carousel -->
+
+    </div>
+    <!-- end .main-content -->
+
+    <div class="top-bar" id="topBar"></div>
+
+    <!-- First container: OUR CONTENT PREVIEWS -->
+    <div class="container">
+        <h1>CHECK OUT WHAT YOU WILL GET</h1>
+        <div class="cards">
+
+            <!-- Card 1 -->
+            <div class="card">
+                <video src="https://files.catbox.moe/cfbklq.mp4" controls preload="metadata" playsinline style="width: 100%; height: auto; border-radius: 10px; display: block; margin: 0 auto;">
+        </video>
+
+                <div class="card-content">
+                    <h2>1</h2>
+                    <span>+ 3,000 Videos & Daily uploads</span>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="card">
+                <img src="https://files.catbox.moe/cn416n.jpg" alt="imagem" style="width: 100%; height: auto; border-radius: 10px; display: block; margin: 0 auto;">
+                <div class="card-content">
+                    <h2>2</h2>
+                    <span>in 1 Lifetime Access</span>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="card">
+                <video src="https://files.catbox.moe/88l091.mp4" controls preload="metadata" playsinline style="width: 100%; height: auto; border-radius: 10px; display: block; margin: 0 auto;">
+        </video>
+
+                <div class="card-content">
+                    <h2>3</h2>
+                    <span>EXCLUSIVE VIP GROUP ACCESS</span>
+                </div>
+            </div>
+
+        </div>
+        <!-- end .cards -->
+    </div>
+    <!-- end .container -->
+
+    <script>
+        function openPopup(url) {
+            window.open(url, '_blank');
+        }
+    </script>
+
+    <!-- Second container: What's Inside -->
+    <div class="container">
+        <h1>What's Inside</h1>
+        <div class="cards">
+
+            <!-- Card 1 -->
+            <div class="card">
+                <video src="https://files.catbox.moe/cfbklq.mp4" controls preload="metadata" playsinline style="width: 100%; height: auto; border-radius: 10px; display: block; margin: 0 auto;">
+        </video>
+                <div class="card-content">
+                    <h2>1</h2>
+                    <span>PAY & GET INSTANT ACCESS</span>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="card">
+                <img src="https://files.catbox.moe/qhd2lx.jpg" loading="lazy" alt="Ivanka-1" style="width:100%; height:auto; border-radius:10px; display:block; margin:0 auto;">
+                <div class="card-content">
+                    <h2>2</h2>
+                    <span>24/7 CUSTOMER SUPPORT</span>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="card">
+                <video src="https://files.catbox.moe/1rqmvv.MP4" controls preload="metadata" playsinline style="width: 100%; height: auto; border-radius: 10px; display: block; margin: 0 auto;">
+        </video>
+                <div class="card-content">
+                    <h2>3</h2>
+                    <span>LONG/ FULL EXCLUSIVE VIDEOS</span>
+                </div>
+            </div>
+
+        </div>
+        <!-- end .cards -->
+    </div>
+    <!-- end .container -->
+
+    <!-- Third container: Trust me -->
+    <div class="container">
+        <h1>Trust me</h1>
+        <div class="cards trust-me">
+
+            <!-- Card 1 with mini-slider of 3 images (horizontal) -->
+            <div class="card">
+                <div class="mini-slider" role="list">
+                    <img src="https://files.catbox.moe/fk1ih1.jpg" alt="img1" loading="lazy">
+                    <img src="https://files.catbox.moe/apyc5i.jpg" alt="img2" loading="lazy">
+                    <img src="https://files.catbox.moe/iho46k.jpg" alt="img3" loading="lazy">
+                </div>
+
+                <div class="card-content">
+                    <h2>1</h2>
+                    <span>Trust me - I'm legit</span>
+                </div>
+            </div>
+
+        </div>
+        <!-- end .cards trust-me -->
+    </div>
+    <!-- end .container -->
+
+    <!-- NOTE: "For you" section REMOVED as requested -->
+
+    <div class="hub">
+        <!-- Loader -->
+        <div class="background-fade">
+            <div class="logo-container">
+                <div class="logo">UflashBrasil TV</div>
+                <div class="spinner"></div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <!-- OFFER / CTA block (as requested, visible and containing the exact messaging) -->
+            <div class="offer-block">
+                <h2>🚨 LAST CHANCE – PRICE GETS HIGHER IN LESS THAN 24H 🚨</h2>
+
+                <div>3,000+ uncensored public flashes</div>
+                <div>Lifetime access + daily drops</div>
+                <div>6,000+ members already inside the vip</div>
+
+                <div class="big-price">$10 TODAY ONLY</div>
+
+                <div>Don’t be the guy jerking off to boring content</div>
+                <div style="margin-top:12px;"><strong>CLICK BELOW AND GET YOUR LINK IN 3 SECONDS</strong></div>
+                <div>OR PAY AT A HIGHER PRICE TOMORROW</div>
+
+                <div class="notice">You have 60 seconds to lock in $10 LIFETIME ACCESS</div>
+            </div>
+
+            <!-- PRE-CTA (visível e antes do botão de compra) -->
+            <div class="pre-cta">
+                <div class="pre-cta-box" style="
+      background: transparent;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      width: 100%;
+  ">
+                    <!-- SETAS BONITAS (sem formato de botao) -->
+                    <span style="
+          font-size: 32px;
+          font-weight: 900;
+          color: #cc0000;
+          text-shadow: 0 3px 12px rgba(255,0,0,0.35);
+      ">⬇️⬇️</span>
+                </div>
+            </div>
+
+
+            <!-- big red checkout CTA (PARA CLICAR) -->
+            <div style="margin-bottom:14px;">
+
+                <a class="checkout-cta pulse" href="https://pay.hotmart.com/J103570346K?checkoutMode=10" role="button" aria-label="Ir para checkout" style="
+        display:inline-block;
+        text-decoration:none;
+        background:#3700ff;              /* 🔥 AZUL*/
+        color:#fff;
+        font-weight:800;
+        padding:18px 28px;
+        border-radius:34px;
+        box-shadow:0 8px 28px rgba(8, 0, 255, 0.35);
+        border:0;
+        cursor:pointer;
+        font-size:18px;
+        transition:transform .12s ease, box-shadow .12s ease;
+     ">
+     CLICK HERE & GET INSTANT ACCESS FOR $10
+  </a>
+
+            </div>
+
+            <!-- Support explanatory text placed BETWEEN the two buttons as requested -->
+            <div class="support-text" style="
+    color: #555;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    line-height: 1.4;
+">
+                If you need help or having problemas click in the link below to contact our 24/7 support team they will help you in seconds!
+            </div>
+
+            <!-- only support button remains (telegram) - red now -->
+            <a href="https://t.me/premiumhelpervipZ" target="_blank" class="support-btn" aria-label="Contact support on Telegram">
+        <i class="fab fa-telegram-plane" style="font-style:normal;"></i> Contact support on Telegram
+      </a>
+        </div>
+    </div>
+    <!-- end .hub -->
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const loader = document.querySelector(".background-fade");
+
+            if (sessionStorage.getItem("visited")) {
+                loader.style.display = "none"; // Oculta o loader após a primeira visita
+            } else {
+                sessionStorage.setItem("visited", "true");
+                setTimeout(() => {
+                    loader.style.display = "none";
+                }, 5000); // Tempo do loader
+            }
+        });
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const videos = document.querySelectorAll("video");
+
+            videos.forEach((video) => {
+                video.setAttribute("webkit-playsinline", "true"); // Evita fullscreen no Safari
+                video.setAttribute("playsinline", "true");
+            });
+        });
+    </script>
+
+    <!-- AUTOPLAY MINI-SLIDER (Trust me) - inicia só quando a secção estiver visível, não reinicia índice -->
+    <script>
+        (function() {
+            const slider = document.querySelector('.mini-slider');
+            if (!slider) return;
+
+            const imgs = Array.from(slider.querySelectorAll('img'));
+            if (imgs.length <= 1) return;
+
+            let current = 0;
+            let timer = null;
+            let manualPause = false; // se o utilizador interagir (hover/touch), não reinicia automaticamente até soltar
+            const INTERVAL_MS = 3000;
+
+            function startTimer() {
+                if (timer || manualPause) return;
+                timer = setInterval(advance, INTERVAL_MS);
+            }
+
+            function stopTimer() {
+                if (!timer) return;
+                clearInterval(timer);
+                timer = null;
+            }
+
+            function advance() {
+                current = (current + 1) % imgs.length;
+                imgs[current].scrollIntoView({
+                    behavior: 'smooth',
+                    inline: 'start'
+                });
+            }
+
+            // Observador: só inicia quando o slider estiver visível (pelo menos 50%)
+            const io = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
+                        // visível: inicia (se não estiver em pausa manual)
+                        startTimer();
+                    } else {
+                        // fora de vista: pausa (mas não reinicia índice)
+                        stopTimer();
+                    }
+                });
+            }, {
+                threshold: [0.5]
+            });
+
+            io.observe(slider);
+
+            // Pausa enquanto o utilizador interage (hover/touch), reinicia quando terminar e o slider estiver visível
+            slider.addEventListener('mouseenter', () => {
+                manualPause = true;
+                stopTimer();
+            });
+            slider.addEventListener('mouseleave', () => {
+                manualPause = false;
+                // só reinicia se estiver visível
+                const rect = slider.getBoundingClientRect();
+                const inView = (rect.top < window.innerHeight) && (rect.bottom > 0);
+                if (inView) startTimer();
+            });
+
+            slider.addEventListener('touchstart', () => {
+                manualPause = true;
+                stopTimer();
+            }, {
+                passive: true
+            });
+            slider.addEventListener('touchend', () => {
+                manualPause = false;
+                const rect = slider.getBoundingClientRect();
+                const inView = (rect.top < window.innerHeight) && (rect.bottom > 0);
+                if (inView) startTimer();
+            }, {
+                passive: true
+            });
+
+            // Segurança: limpa o intervalo se a página for descarregada
+            window.addEventListener('beforeunload', () => stopTimer());
+        })();
+    </script>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/swiper-bundle.min.js"></script>
+    <script src="js/script.js"></script>
+
+</body>
+
+</html>
